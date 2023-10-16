@@ -1,0 +1,58 @@
+<!-- Author: Alexander Fuchs -->
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="auto">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Alexander Fuchs">
+
+</head>
+
+<body class="d-flex flex-column justify-content-between">
+
+<header class="py-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img class="bi logo" src="../assets/logo_all_white.png" alt="">
+
+        <div class="d-flex ms-2 ms-md-3 ms-lg-4 align-items-center">
+          <a *ngIf="!signedIn && path !== ''" routerLink=""
+             class="nav-link px-2 px-md-3 px-lg-4 text-white">Übersicht</a>
+          <a *ngIf="signedIn && path !== '/report'" routerLink="/report"
+             class="nav-link px-2 px-md-3 px-lg-4 text-white">Bericht</a>
+          <a *ngIf="signedIn && path !== '/invoice'" routerLink="/invoice"
+             class="nav-link px-2 px-md-3 px-lg-4 text-white">Rechnung</a>
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button *ngIf="signedIn && path !== '/account'" routerLink="/account" type="button"
+                class="send-button btn btn-outline-light mx-2">Account
+        </button>
+        <button *ngIf="signedIn" (click)="signOut()" type="button" class="send-button btn btn-success">
+          Ausloggen
+        </button>
+        <button *ngIf="!signedIn && path !== '/signIn'" routerLink="/signIn" type="button"
+                class="send-button btn btn-success">Anmelden
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="py-3">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+
+<footer class="py-3 bg-body-tertiary">
+  <div class="container">
+    <h1 class="h3 fw-normal footer-text">© Paltech - 2023. Alle Rechte vorbehalten.</h1>
+  </div>
+</footer>
+
+</body>
+</html>

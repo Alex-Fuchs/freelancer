@@ -1,0 +1,105 @@
+/* Author: Alexander Fuchs */
+
+/* You can add global styles to this file, and also import other style files */
+
+@media (max-width: 400px) {
+  .logo {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-text {
+    text-align: center;
+  }
+}
+
+@media (min-width: 0px) {
+  /* smartphones, iPhone, portrait 480x320 phones */
+  .h3, a {
+    font-size: var(--level-two-base);
+  }
+
+  .send-button {
+    font-size: var(--level-two-base);
+  }
+
+  .logo {
+    width: var(--logo-width-base);
+  }
+}
+
+@media (min-width: 481px) {
+  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+  .h3, a {
+    font-size: calc(var(--level-two-base) + var(--level-two-step));
+  }
+
+  .send-button {
+    font-size: calc(var(--level-two-base) + var(--level-two-step));
+  }
+
+  .logo {
+    width: calc(var(--logo-width-base) + var(--logo-width-step));
+  }
+}
+
+@media (min-width: 641px) {
+  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+  span, a {
+    font-size: calc(var(--level-two-base) + 2 * var(--level-two-step));
+  }
+
+  .send-button {
+    font-size: calc(var(--level-two-base) + 2 * var(--level-two-step));
+  }
+
+  .logo {
+    width: calc(var(--logo-width-base) + 2 * var(--logo-width-step));
+  }
+}
+
+@media (min-width: 961px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .h3, a {
+    font-size: calc(var(--level-two-base) + 3 * var(--level-two-step));
+  }
+
+  .send-button {
+    font-size: calc(var(--level-two-base) + 3 * var(--level-two-step));
+  }
+
+  .logo {
+    width: calc(var(--logo-width-base) + 3 * var(--logo-width-step));
+  }
+}
+
+@media (min-width: 1025px) {
+  /* big landscape tablets, laptops, and desktops */
+  .h3, a {
+    font-size: calc(var(--level-two-base) + 4 * var(--level-two-step));
+  }
+
+  .send-button {
+    font-size: calc(var(--level-two-base) + 4 * var(--level-two-step));
+  }
+
+  .logo {
+    width: calc(var(--logo-width-base) + 4 * var(--logo-width-step));
+  }
+}
+
+@media (min-width: 1281px) {
+  /* hi-res laptops and desktops */
+  .h3, a {
+    font-size: calc(var(--level-two-base) + 5 * var(--level-two-step));
+  }
+
+  .send-button {
+    font-size: calc(var(--level-two-base) + 5 * var(--level-two-step));
+  }
+
+  .logo {
+    width: calc(var(--logo-width-base) + 5 * var(--logo-width-step));
+  }
+}

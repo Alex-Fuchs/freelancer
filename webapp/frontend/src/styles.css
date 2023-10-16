@@ -1,0 +1,53 @@
+/* Author: Alexander Fuchs */
+
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.form-check-input:checked {
+  background-color: #198754 !important;
+  border: 0;
+}
+
+.form-check-input:focus, .label::after, label.form-check-label:focus, .form-check-input::after, .form-check-input:not(:disabled):not(.disabled):active:focus {
+  color: black;
+  outline: 0;
+  border: 0;
+  box-shadow: 0 0 0 0.1rem #198754 !important;
+}
+
+table {
+  width: 100%;
+}
+
+:root {
+  --form-width-base: 80%;
+  --form-width-step: 7%;
+
+  --level-zero-base: 9px;
+  --level-zero-step: 2px;
+
+  --level-one-base: 13px;
+  --level-one-step: 2px;
+
+  --level-two-base: 15px;
+  --level-two-step: 2px;
+
+  --level-three-base: 19px;
+  --level-three-step: 2px;
+
+  --level-four-base: 27px;
+  --level-four-step: 2px;
+
+  --input-width-base: 50px;
+  --input-width-step: 10px;
+
+  --input-height-base: 20px;
+  --input-height-step: 5px;
+
+  --logo-width-base: 60px;
+  --logo-width-step: 10px;
+}
