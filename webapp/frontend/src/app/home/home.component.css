@@ -1,67 +1,77 @@
 /* Author: Alexander Fuchs */
 
-@media (min-width: 0px) {
-  /* smartphones, iPhone, portrait 480x320 phones */
-  .h1 {
-    font-size: calc(var(--level-four-base));
-  }
+.container {
+  max-width: 960px;
+}
 
-  .h3 {
-    font-size: calc(var(--level-three-base));
+.icon-link > .bi {
+  width: .75em;
+  height: .75em;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #8e8e8e;
+  transition: color .15s ease-in-out;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Dummy devices (replace them with your own or something else entirely!)
+ */
+
+.product-device {
+  position: absolute;
+  right: 10%;
+  bottom: -30%;
+  width: 300px;
+  height: 540px;
+  background-color: #333;
+  border-radius: 21px;
+  transform: rotate(30deg);
+}
+
+.product-device::before {
+  position: absolute;
+  top: 10%;
+  right: 10px;
+  bottom: 10%;
+  left: 10px;
+  content: "";
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 5px;
+}
+
+.product-device-2 {
+  top: -25%;
+  right: auto;
+  bottom: 0;
+  left: 5%;
+  background-color: #e5e5e5;
+}
+
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    flex: 1;
   }
 }
 
-@media (min-width: 481px) {
-  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-  .h1 {
-    font-size: calc(var(--level-four-base) + var(--level-four-step));
-  }
-
-  .h3 {
-    font-size: calc(var(--level-three-base) + var(--level-three-step));
-  }
-}
-
-@media (min-width: 641px) {
-  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-  .h1 {
-    font-size: calc(var(--level-four-base) + 2 * var(--level-four-step));
-  }
-
-  .h3 {
-    font-size: calc(var(--level-three-base) + 2 * var(--level-three-step));
-  }
-}
-
-@media (min-width: 961px) {
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-  .h1 {
-    font-size: calc(var(--level-four-base) + 3 * var(--level-four-step));
-  }
-
-  .h3 {
-    font-size: calc(var(--level-three-base) + 3 * var(--level-three-step));
-  }
-}
-
-@media (min-width: 1025px) {
-  /* big landscape tablets, laptops, and desktops */
-  .h1 {
-    font-size: calc(var(--level-four-base) + 4 * var(--level-four-step));
-  }
-
-  .h3 {
-    font-size: calc(var(--level-three-base) + 4 * var(--level-three-step));
-  }
-}
-
-@media (min-width: 1281px) {
-  /* hi-res laptops and desktops */
-  .h1 {
-    font-size: calc(var(--level-four-base) + 5 * var(--level-four-step));
-  }
-
-  .h3 {
-    font-size: calc(var(--level-three-base) + 5 * var(--level-three-step));
-  }
-}

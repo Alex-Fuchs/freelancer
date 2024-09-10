@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {StorageService} from "../storage.service";
 import {Router} from "@angular/router";
 import {DataService} from "../data.service";
 
@@ -10,11 +9,11 @@ import {DataService} from "../data.service";
  * @author Alexander Fuchs
  */
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
 })
-export class SigninComponent implements OnInit {
+export class ContactComponent implements OnInit {
 
   response = {
     success: false,
@@ -25,16 +24,16 @@ export class SigninComponent implements OnInit {
     }
   };
 
-  signInForm: FormGroup;
+  contactForm: FormGroup;
 
-  constructor(private data: DataService, private storage: StorageService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private data: DataService, private formBuilder: FormBuilder, private router: Router) {
   }
 
   /**
    * Initializes all inputs for signing in.
    */
   ngOnInit(): void {
-    this.signInForm = this.formBuilder.group({
+    this.contactForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
@@ -44,14 +43,6 @@ export class SigninComponent implements OnInit {
    * trys to sign in and if successful saves the token and forwards to /report
    */
   onSubmit(): void {
-    this.data.signIn(this.signInForm.value.username, this.signInForm.value.password).subscribe(data => {
-      this.response = data;
 
-      if (this.response.success) {
-        this.storage.saveToken(this.response.token);
-
-        this.router.navigate(['/report']);
-      }
-    });
   }
 }

@@ -7,20 +7,12 @@
   .form-width {
     width: var(--form-width-base);
   }
-
-  .send-button {
-    font-size: var(--level-two-base);
-  }
 }
 
 @media (min-width: 481px) {
   /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
   .form-width {
     width: calc(var(--form-width-base) - var(--form-width-step));
-  }
-
-  .send-button {
-    font-size: calc(var(--level-two-base) + var(--level-two-step));
   }
 }
 
@@ -29,20 +21,12 @@
   .form-width {
     width: calc(var(--form-width-base) - 2 * var(--form-width-step));
   }
-
-  .send-button {
-    font-size: calc(var(--level-two-base) + 2 * var(--level-two-step));
-  }
 }
 
 @media (min-width: 961px) {
   /* tablet, landscape iPad, lo-res laptops ands desktops */
   .form-width {
     width: calc(var(--form-width-base) - 3 * var(--form-width-step));
-  }
-
-  .send-button {
-    font-size: calc(var(--level-two-step) + 3 * var(--level-two-step));
   }
 }
 
@@ -52,19 +36,12 @@
     width: calc(var(--form-width-base) - 4 * var(--form-width-step));
   }
 
-  .send-button {
-    font-size: calc(var(--level-two-base) + 4 * var(--level-two-step));
-  }
 }
 
 @media (min-width: 1281px) {
   /* hi-res laptops and desktops */
   .form-width {
     width: calc(var(--form-width-base) - 5 * var(--form-width-step));
-  }
-
-  .send-button {
-    font-size: calc(var(--level-two-base) + 5 * var(--level-two-step));
   }
 }
 
