@@ -14,6 +14,8 @@ header, footer {
   color: #424649;
 }
 
+/* Responsive Design */
+
 @media (max-width: 500px) {
   .footer-text {
     text-align: center;
