@@ -17,6 +17,5 @@ export class AppComponent {
 
   title = "";
 
-  constructor(private data: DataService, private location: Location, private router: Router) {
-  }
+  constructor() { }
 }

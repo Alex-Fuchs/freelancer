@@ -15,18 +15,11 @@ import {DataService} from "../data.service";
 })
 export class ContactComponent implements OnInit {
 
-  response = {
-    success: false,
-    token: '',
-    errors: {
-      usernameNotPresent: false,
-      passwordWrong: false
-    }
-  };
-
   contactForm: FormGroup;
 
-  constructor(private data: DataService, private formBuilder: FormBuilder, private router: Router) {
+  hidden: boolean = false;
+
+  constructor(private dataService: DataService, private formBuilder: FormBuilder, private router: Router) {
   }
 
   /**
@@ -34,8 +27,11 @@ export class ContactComponent implements OnInit {
    */
   ngOnInit(): void {
     this.contactForm = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      prename: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      organization: [''],
+      message: ['', [Validators.required]]
     });
   }
 
@@ -43,6 +39,13 @@ export class ContactComponent implements OnInit {
    * trys to sign in and if successful saves the token and forwards to /report
    */
   onSubmit(): void {
+    this.hidden = true;
 
+    this.dataService.contact(this.contactForm.value.prename, this.contactForm.value.surname, this.contactForm.value.email,
+      this.contactForm.value.organization, this.contactForm.value.message).subscribe(data => {
+        this.hidden = false;
+
+        this.router.navigate(['']);
+    })
   }
 }
