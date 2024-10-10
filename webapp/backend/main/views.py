@@ -93,13 +93,13 @@ def contact(request: HttpRequest) -> JsonResponse:
 
     msg = MIMEMultipart()
     msg['Subject'] = f'Message: {prename}, {surname}, {email}, {organization}'
-    msg['From'] = 'webmaster@tinder-up.com'
+    msg['From'] = 'webmaster@more-matches.com'
     msg['To'] = 'fuchs.ali@gmail.com'
     msg.attach(MIMEText(message))
 
     s = smtplib.SMTP_SSL('smtp.strato.de:465')
-    s.login('webmaster@tinder-up.com', 'tinder.up.go.')
-    s.sendmail('webmaster@tinder-up.com', 'fuchs.ali@gmail.com', msg.as_string())
+    s.login('webmaster@more-matches.com',)
+    s.sendmail('webmaster@more-matches.com', 'fuchs.ali@gmail.com', msg.as_string())
     s.quit()
 
     return JsonResponse({})
