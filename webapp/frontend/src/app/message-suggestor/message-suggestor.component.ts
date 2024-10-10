@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {DataService} from "../data.service";
 import {Modal} from "bootstrap";
 
@@ -108,11 +108,16 @@ export class MessageSuggestorComponent {
   selectedFile: File | null;
 
   hidden: boolean = false;
+  hidden_success: boolean = false;
 
-  title: string = '';
-  message: string = '';
+  title_error: string = '';
+  message_error: string = '';
 
-  constructor(private dataService: DataService) { }
+  title_success: string = '';
+  message_success: string = '';
+
+  constructor(private dataService: DataService) {
+  }
 
   select(event: any) {
     this.selectedFile = event.target.files[0];
@@ -131,13 +136,25 @@ export class MessageSuggestorComponent {
 
     this.dataService.message_suggestor(this.preview).subscribe(
       data => {
-        this.title = 'TO EDIT'
-        this.message = data.response
+        this.title_success = 'Your message suggestion'
+        this.message_success = data.response
 
-        const modal = new Modal(document.getElementById('modal') as HTMLElement);
+        const modal = new Modal(document.getElementById('modal_success') as HTMLElement);
         modal.show();
 
         this.hidden = false;
-    });
+      });
+  }
+
+  upload_again() {
+    this.hidden_success = true;
+
+    this.dataService.message_suggestor(this.preview).subscribe(
+      data => {
+        this.title_success = 'Your message suggestion'
+        this.message_success = data.response
+
+        this.hidden_success = false;
+      });
   }
 }

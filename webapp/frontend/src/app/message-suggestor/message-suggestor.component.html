@@ -95,15 +95,37 @@
   </div>
 </div>
 
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+
+<div class="modal fade" id="modal_success" tabindex="-1" aria-labelledby="modal_success_Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel">{{title}}</h1>
+        <h1 class="modal-title fs-5" id="modal_success_Label">{{title_success}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>{{message_success}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="upload_again()" class="btn btn-outline-dark upload_again">
+          <span [hidden]="!hidden_success" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span [hidden]="hidden_success" role="status">Again</span>
+        </button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_error" tabindex="-1" aria-labelledby="modal_error_Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal_error_Label">{{title_error}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{message_error}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>

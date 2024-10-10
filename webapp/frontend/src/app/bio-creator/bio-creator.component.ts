@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {DataService} from "../data.service";
 import {Modal} from "bootstrap";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-bio-creator',
@@ -21,7 +21,8 @@ export class BioCreatorComponent {
   title_success: string = '';
   message_success: string = '';
 
-  constructor(private dataService: DataService, private formBuilder: FormBuilder, ) { }
+  constructor(private dataService: DataService, private formBuilder: FormBuilder,) {
+  }
 
   ngOnInit(): void {
     this.bioForm = this.formBuilder.group({
@@ -34,8 +35,8 @@ export class BioCreatorComponent {
 
     if (this.bioForm.value.text.length < 75) {
       this.title_error = 'Not enough information'
-      this.message_error = 'Your description lacks sufficient details to create an accurate bio. ' +
-        'Please provide at least 25 words; otherwise, the generated bio may contain random or unrelated information about you.'
+      this.message_error = 'Your description lacks sufficient details to create an accurate bio. Please provide at' +
+        ' least 25 words; otherwise, the generated bio may contain random or unrelated information about you.'
 
       const modal = new Modal(document.getElementById('modal_error') as HTMLElement);
       modal.show();
@@ -59,11 +60,11 @@ export class BioCreatorComponent {
     this.hidden_success = true;
 
     this.dataService.bio_creator(this.bioForm.value.text).subscribe(
-        data => {
-          this.title_success = 'Your created bio'
-          this.message_success = data.response
+      data => {
+        this.title_success = 'Your created bio'
+        this.message_success = data.response
 
-          this.hidden_success = false;
-        });
+        this.hidden_success = false;
+      });
   }
 }
