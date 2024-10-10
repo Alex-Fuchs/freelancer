@@ -31,8 +31,13 @@
 
     <div class="d-flex flex-column align-items-center mt-5">
       <div class="form-floating upload">
-        <textarea class="form-control text" placeholder="Description" id="floatingTextarea">{{text}}</textarea>
-        <label for="floatingTextarea">Description</label>
+        <form [formGroup]="bioForm">
+          <div class="form-floating">
+          <textarea class="form-control text" formControlName="text" placeholder="Description"
+                    id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Description</label>
+          </div>
+        </form>
       </div>
 
       <button type="button" (click)="upload()" class="btn btn-dark mt-4 upload">
@@ -76,33 +81,40 @@
           </div>
         </div>
       </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Do you save my uploaded texts?
-          </button>
-        </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            After the description is processed by our AI model and the result is provided to the user,
-            we no longer have any access to it.
-          </div>
-        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_success" tabindex="-1" aria-labelledby="modal_success_Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal_success_Label">{{title_success}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{message_success}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="upload_again()" class="btn btn-outline-dark upload_again">
+          <span [hidden]="!hidden_success" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span [hidden]="hidden_success" role="status">Again</span>
+        </button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_error" tabindex="-1" aria-labelledby="modal_error_Label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel"></h1>
+        <h1 class="modal-title fs-5" id="modal_error_Label">{{title_error}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>{{message}}</p>
+        <p>{{message_error}}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>

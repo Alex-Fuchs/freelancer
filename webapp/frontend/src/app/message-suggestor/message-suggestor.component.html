@@ -41,7 +41,7 @@
         <span [hidden]="hidden" role="status">Generate</span>
       </button>
 
-      <small class="text-muted mt-3">Chat is processed by multiple AI models. It is not saved or shared to any
+      <small class="text-muted mt-3">Chats are processed by multiple AI models. They are not saved or shared to any
         time.</small>
     </div>
   </div>
@@ -77,6 +77,20 @@
           </div>
         </div>
       </div>
+            <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Do you save my uploaded chats?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            After the chats are processed by our AI models and the result is provided to the user,
+            we no longer have any access to them.
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -85,7 +99,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="modalLabel"></h1>
+        <h1 class="modal-title fs-5" id="modalLabel">{{title}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

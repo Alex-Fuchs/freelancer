@@ -62,8 +62,8 @@ def face_enhancer(request: HttpRequest) -> JsonResponse:
 def bio_creator(request: HttpRequest) -> JsonResponse:
     text = request.POST['text']
 
-    prompt = f'Generate an attractive online dating bio with 20 to 35 words for a person with following description.' \
-             f' If not enough information is given, generate a random bio. Only output the bio: {text}'
+    prompt = f'Generate an attractive online dating bio with 15 to 30 words for a person with following description:' \
+             f' {text}. If not enough information is given, generate a random bio. Only output the bio.'
 
     response = predictor.predict_text_generation(prompt)
 

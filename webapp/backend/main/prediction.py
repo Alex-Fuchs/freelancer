@@ -7,9 +7,9 @@ import torch
 import torch.nn as nn
 from PIL import Image
 from deepface import DeepFace
+from openai import OpenAI
 from transformers import pipeline
 from ultralytics import YOLO
-from openai import OpenAI
 
 
 class Predictor(nn.Module):
@@ -19,12 +19,13 @@ class Predictor(nn.Module):
         self.object_detector = YOLO("yolov8n.pt")
         self.age_detector = pipeline("image-classification", model="dima806/facial_age_image_detection")
 
-        self.text_generation = OpenAI()
+        self.text_generation = OpenAI(
+            api_key='sk-TPOJiPj2I0SuRCobL8mBXir2rE-s_RtN-dBfFs2HnFT3BlbkFJuBYhQ7PbfuuJi6FG7yfUWw9Yef4GBfnUI2ceuVSqQA')
         self.clip, self.clip_preprocess = clip.load("ViT-B/32")
 
     def predict_text_generation(self, prompt):
         completion = self.text_generation.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt}

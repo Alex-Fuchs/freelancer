@@ -129,9 +129,10 @@ export class MessageSuggestorComponent {
   upload() {
     this.hidden = true;
 
-    this.dataService.bio_creator(this.preview).subscribe(
+    this.dataService.message_suggestor(this.preview).subscribe(
       data => {
-        this.message = data.responses.join(" \n ");
+        this.title = 'TO EDIT'
+        this.message = data.response
 
         const modal = new Modal(document.getElementById('modal') as HTMLElement);
         modal.show();
