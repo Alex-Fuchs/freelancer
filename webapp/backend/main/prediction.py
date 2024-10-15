@@ -19,8 +19,7 @@ class Predictor(nn.Module):
         self.object_detector = YOLO("yolov8n.pt")
         self.age_detector = pipeline("image-classification", model="dima806/facial_age_image_detection")
 
-        self.text_generation = OpenAI(
-            api_key='sk-TPOJiPj2I0SuRCobL8mBXir2rE-s_RtN-dBfFs2HnFT3BlbkFJuBYhQ7PbfuuJi6FG7yfUWw9Yef4GBfnUI2ceuVSqQA')
+        self.text_generation = OpenAI()
         self.clip, self.clip_preprocess = clip.load("ViT-B/32")
 
     def predict_text_generation(self, prompt):
@@ -36,11 +35,11 @@ class Predictor(nn.Module):
 
     @torch.no_grad()
     def predict_clip(self, image: Image.Image, labels: List[str]):
-        labels = clip.tokenize(labels).to(self.device)
+        labels = clip.tokenize(labels)
         text_features = self.clip.encode_text(labels)
         text_features /= text_features.norm(dim=1, keepdim=True)
 
-        image = self.clip_preprocess(image).unsqueeze(0).to(self.device)
+        image = self.clip_preprocess(image).unsqueeze(0)
         image_features = self.clip.encode_image(image)
         image_features /= image_features.norm(dim=1, keepdim=True)
 

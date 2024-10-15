@@ -109,8 +109,11 @@ export class PhotoRaterComponent {
 
   hidden: boolean = false;
 
-  title: string = '';
-  message: string = '';
+  title_error: string = '';
+  message_error: string = '';
+
+  title_success: string = '';
+  message_success: string = '';
 
   constructor(private dataService: DataService) { }
 
@@ -134,24 +137,24 @@ export class PhotoRaterComponent {
         this.preview = 'data:image/jpeg;base64,' + data.image;
 
         if (data.error.minor) {
-          this.title = 'Minimum age requirement not reached';
-          this.message = 'The image contains a person under the age of 16, so we are unable to provide a rating in' +
+          this.title_error = 'Minimum age requirement not reached';
+          this.message_error = 'The image contains a person under the age of 16, so we are unable to provide a rating in' +
             ' accordance with our guidelines.';
 
-          const modal = new Modal(document.getElementById('modal') as HTMLElement);
+          const modal = new Modal(document.getElementById('modal_error') as HTMLElement);
           modal.show();
         } else if (data.error.multiple_person) {
-          this.title = 'Multiple people shown';
-          this.message = 'The image contains multiple people. For accurate ratings, please upload an image with only' +
+          this.title_error = 'Multiple people shown';
+          this.message_error = 'The image contains multiple people. For accurate ratings, please upload an image with only' +
             ' one person, as the presence of multiple individuals can significantly reduce rating quality.';
 
-          const modal = new Modal(document.getElementById('modal') as HTMLElement);
+          const modal = new Modal(document.getElementById('modal_error') as HTMLElement);
           modal.show();
         } else if (data.error.no_person) {
-          this.title = 'No person shown';
-          this.message = 'No person is visible in the image. Please upload an image that includes a person for a rating.';
+          this.title_error = 'No person shown';
+          this.message_error = 'No person is visible in the image. Please upload an image that includes a person for a rating.';
 
-          const modal = new Modal(document.getElementById('modal') as HTMLElement);
+          const modal = new Modal(document.getElementById('modal_error') as HTMLElement);
           modal.show();
         }
 
