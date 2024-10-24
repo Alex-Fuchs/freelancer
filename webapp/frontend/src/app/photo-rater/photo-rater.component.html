@@ -1,0 +1,162 @@
+<!-- Author: Alexander Fuchs -->
+<div class="position-relative overflow-hidden mx-4 p-5 text-center bg-body-tertiary">
+  <div class="mx-auto mt-5 p-5">
+    <div class="mt-4 mb-3">
+      <h1 class="fw-bold">Photo Rater</h1>
+      <h3 class="fw-normal text-muted mb-3">Upload an image and generate your score</h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <a class="icon-link" href="/beauty_rater#upload">
+          Upload
+          <svg class="bi">
+            <use xlink:href="#chevron-right"/>
+          </svg>
+        </a>
+        <a class="icon-link" href="/beauty_rater#faq">
+          FAQs
+          <svg class="bi">
+            <use xlink:href="#chevron-right"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="product-device shadow-sm d-none d-md-block"></div>
+  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
+
+<div class="position-relative overflow-hidden mt-4 mx-4 p-5 text-center bg-body-tertiary">
+  <div class="mx-auto mb-2 p-5">
+    <h1 id="upload" class="fw-bold">Test your attractiveness by uploading a photo</h1>
+    <h3 class="fw-normal text-muted">Our AI models can rate your face on a scale from 1 to 10</h3>
+
+    <div class="d-flex flex-column align-items-center mt-5">
+      <img [src]="preview" class="upload" alt="">
+
+      <button class="btn btn-light py-2 mt-5 upload rounded-pill bg-white shadow-sm"
+              onclick="document.getElementById('fileupload').click()">Choose file</button>
+      <input id="fileupload" type='file' accept="image/*" (change)="select($event)" style="display:none">
+
+      <button type="button" (click)="upload()" class="btn btn-dark mt-4 upload">
+        <span [hidden]="!hidden" class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        <span [hidden]="hidden" role="status">Rate</span>
+      </button>
+
+      <small class="text-muted mt-3">Photos are processed by multiple AI models. They are not saved or shared to any
+        time.</small>
+    </div>
+  </div>
+</div>
+
+<div id="faq" class="position-relative overflow-hidden mt-4 mx-4 p-5 text-center bg-body-tertiary">
+  <div class="mx-auto p-4 w-50">
+    <h1 class="fw-bold">FAQs</h1>
+    <div class="accordion mt-5 mb-3" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false" aria-controls="collapseOne">
+            How does the test work?
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            The attractiveness test uses state-of-the-art AI models to detect and rate the face and body
+            according to their attractiveness on a scale from 1 to 10.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Does the test only analyze the face?
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            The attractiveness test evaluates both the face and body, giving two separate ratings.
+            The face is also considered in the body rating as part of the assessment.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Is the test accurate?
+          </button>
+        </h2>
+        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            As always with AI, there is no assurance that the models will consistently provide accurate results.
+            However, during tests, the AI models demonstrated reliable performance.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Do you save my uploaded photos?
+          </button>
+        </h2>
+        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            After the photos are processed by our AI models and the results are provided to the user,
+            we no longer have any access to them.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            Is there a minimum age?
+          </button>
+        </h2>
+        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            As the attractiveness test is fully objective, the rating may sometimes be quite hurtful.
+            Therefore, we’ve decided to release low ratings only when we believe the person in the photo is capable of
+            handling the result. Consequently, we only provide these ratings if the detected age is 16 or above.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_success" tabindex="-1" aria-labelledby="modal_success_Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal_success_Label">{{title_success}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{message_success}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal_error" tabindex="-1" aria-labelledby="modal_error_Label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modal_error_Label">{{title_error}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{message_error}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
